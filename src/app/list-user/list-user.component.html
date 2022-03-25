@@ -1,0 +1,25 @@
+
+<a class="navbar-brand" [routerLink]="['/home']">Home</a>
+
+<h1 id="tableLabel">User Details</h1>
+
+<p *ngIf="!users"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="users">
+    <thead>
+      <tr>
+        <th>User Id</th>
+        <th>User Name</th>
+        <th>Address</th>
+        <th>Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.userId }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.contact }}</td>
+      </tr>
+    </tbody>
+  </table>
