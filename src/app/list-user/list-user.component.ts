@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppSettings } from '../appsettings.component';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
+import { userModel } from '../interfaces/userModel';
 
 @Component({
   selector: 'app-list-user',
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class ListUserComponent implements OnInit {
 
-  public users: UserEntity[] = [];
+  // public users: UserEntity[] = [];
+  public users: userModel[] = [];
   public success: boolean = false;
   private token: string = '';
 
@@ -28,7 +30,12 @@ export class ListUserComponent implements OnInit {
       'Authorization': `Bearer ` + this.token
     })
 
-    http.get<UserEntity[]>(AppSettings.API_ENDPOINT + 'user', { headers: headers }).subscribe(result => {
+    // http.get<UserEntity[]>(AppSettings.API_ENDPOINT + 'user', { headers: headers }).subscribe(result => {
+    //   this.users = result;
+    //   this.success = true;
+    // }, error => console.error(error));
+
+    http.get<userModel[]>(AppSettings.API_ENDPOINT + 'user', { headers: headers }).subscribe(result => {
       this.users = result;
       this.success = true;
     }, error => console.error(error));
@@ -38,13 +45,4 @@ export class ListUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
-
-
-interface UserEntity{
-
-  userId: number;
-  name: string;
-  address: string;
-  contact: string
 }

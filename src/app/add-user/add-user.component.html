@@ -1,0 +1,53 @@
+
+<h3>Add User</h3>
+
+<a class="navbar-brand" [routerLink]="['/home']">Home</a>
+<br>
+<br>
+<form [formGroup]="userFrmGroup" (ngSubmit)="onSubmit()">
+
+    <div>
+      <label for="name">
+        Name
+      </label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+<br>
+    <div>
+      <label for="address">
+        Address
+      </label>
+      <input id="address" type="text" formControlName="address">
+    </div>
+
+    <br>
+
+    <div>
+      <label for="contact">
+        Contact
+      </label>
+      <input id="contact" type="text" formControlName="contact">
+    </div>
+  
+    <br>
+    <button class="button" type="submit">Add</button>
+
+    <div class="row"  *ngIf="success">
+      <div class="col-xs-12">
+        <p class="alert alert-success">
+            <strong>{{ message }}</strong>
+
+        </p>
+      </div>
+    </div>
+
+    <div class="row"  *ngIf="!success">
+      <div class="col-xs-12">
+        <p class="alert">
+            <strong>{{ message }}</strong>
+
+        </p>
+      </div>
+    </div>
+  
+  </form>
